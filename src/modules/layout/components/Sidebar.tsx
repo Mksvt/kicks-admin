@@ -27,6 +27,7 @@ import { CATEGORIES } from "../config/categories";
 export function Sidebar() {
     const path = usePathname();
     const [activeCategory, setActiveCategory] = useState<string>("");
+
     return (
         <SidebarComponent className="flex border-r w-65 border-border/20">
             <SidebarHeader className="flex items-center justify-center h-24">
@@ -56,7 +57,10 @@ export function Sidebar() {
                 </SidebarGroup>
                 <Collapsible className="group/collapsible">
                     <SidebarGroup className="px-6">
-                        <SidebarGroupLabel asChild className="px-0 mb-4">
+                        <SidebarGroupLabel
+                            asChild
+                            className="px-0 mb-4 cursor-pointer"
+                        >
                             <CollapsibleTrigger className="flex items-center justify-between [&>svg]:size-6 pr-2">
                                 <span className="font-rubik font-medium text-xl text-foreground">
                                     Categories
@@ -72,7 +76,7 @@ export function Sidebar() {
                                     return (
                                         <SidebarMenuItem
                                             key={category}
-                                            className="flex items-center justify-between h-9"
+                                            className="flex items-center justify-between h-9 cursor-pointer"
                                             onClick={() => {
                                                 setActiveCategory(category);
                                             }}
