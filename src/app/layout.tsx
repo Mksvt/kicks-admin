@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Open_Sans, Rubik } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/modules/layout/components/Navbar";
+import { Header } from "@/modules/layout/components/Header";
 import { Sidebar } from "@/modules/layout/components/Sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 
@@ -28,12 +28,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${openSans.variable} ${rubik.variable} antialiased flex h-screen w-screen`}
+                className={`${openSans.variable} ${rubik.variable} antialiased w-full`}
             >
                 <SidebarProvider>
                     <Sidebar />
                     <div className="w-full ml-1">
-                        <Navbar />
+                        <Header />
                         {children}
                     </div>
                 </SidebarProvider>
