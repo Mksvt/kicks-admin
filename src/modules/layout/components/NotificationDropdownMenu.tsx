@@ -1,14 +1,41 @@
 import {
     DropdownMenu,
     DropdownMenuContent,
-    DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { BellIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { PRODUCTS } from "../constants";
+import { BellIcon, CheckIcon, XCircleIcon } from "lucide-react";
+import { NotificationItem, Status } from "./NotificationItem";
+
+const Notifications = [
+    {
+        id: 1,
+        img: "logo.svg",
+        title: "Adidas Yeezy Boost",
+        price: 220,
+        date: "2024-06-01",
+        readed: false,
+        status: "sold" as Status,
+    },
+    {
+        id: 2,
+        img: "logo.svg",
+        title: "Adidas Yeezy Boost",
+        price: 220,
+        date: "2024-06-01",
+        readed: false,
+        status: "sold" as Status,
+    },
+    {
+        id: 3,
+        img: "logo.svg",
+        title: "Adidas Yeezy Boost",
+        price: 220,
+        date: "2024-06-01",
+        readed: false,
+        status: "sold" as Status,
+    },
+];
 
 export function NotificationsDropdownMenu() {
     return (
@@ -23,32 +50,36 @@ export function NotificationsDropdownMenu() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
                 alignOffset={10}
-                className="px-2 py-4 border-border/20 text-border"
+                className="px-2 py-4 bg-white border-border/20 text-border w-100"
             >
                 <div className="flex flex-col gap-2">
                     <h2 className="text-xl font-rubik px-4 font-bold">
                         Notifications
                     </h2>
-                    {PRODUCTS.map((product) => (
-                        <DropdownMenuItem
-                            key={product.name}
-                            className="flex items-center font-open-sans font-semibold cursor-pointer px-4 py-3"
-                        >
-                            <Image
-                                height={40}
-                                width={40}
-                                src={product.img}
-                                alt={product.name}
-                            />
-                            {product.name}
-                        </DropdownMenuItem>
+                    {Notifications.map((notification) => (
+                        <NotificationItem
+                            key={notification.id}
+                            id={notification.id}
+                            img={notification.img}
+                            title={notification.title}
+                            price={notification.price}
+                            date={notification.date}
+                            readed={notification.readed}
+                            status={notification.status}
+                        />
                     ))}
-                    <Link
-                        href="/all-products"
-                        className="font-rubik text-primary text-sm ml-4"
+                </div>
+                <div className="flex items-center justify-between mt-6">
+                    <Button
+                        variant="ghost"
+                        className="px-4 py-2 font-medium uppercase font-rubik text-sm hover:bg-neutral-100"
                     >
-                        See all products
-                    </Link>
+                        <CheckIcon className="size-4" />
+                        Mark all as read
+                    </Button>
+                    <Button className="px-4 py-2 bg-black text-white font-normal uppercase font-rubik text-sm hover:bg-neutral-800">
+                        View all notification
+                    </Button>
                 </div>
             </DropdownMenuContent>
         </DropdownMenu>
