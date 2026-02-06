@@ -28,7 +28,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${openSans.variable} ${rubik.variable} antialiased w-full`}
+                className={`${openSans.variable} ${rubik.variable} antialiased flex h-full w-full`}
             >
                 <SidebarProvider>
                     <Sidebar />
